@@ -1,0 +1,120 @@
+algoritma{
+	program konversi angka ke kata	
+}
+
+deklarasi{
+	int angka, data_angka, satuan, puluhan, ratusan, ribuan
+	string a 						// teks satuan
+   	string b,q 						// teks puluhan
+   	string c,r 						// teks ratusan
+    	string d,s 						// teks ribuan
+    	string teks="" 						// teks nol dan lainnya
+}
+
+deskripsi:
+start:
+	read angka
+
+	data_angka	<- angka
+        satuan		<- data_angka%10
+        puluhan		<- (data_angka/10)%10
+        ratusan		<- (data_angka/100)%10
+        ribuan		<- (data_angka/1000)%10
+
+	Case satuan
+      		1: a <- "SATU"
+ 		2: a <- "DUA"
+	        3: a <- "TIGA"
+	        4: a <- "EMPAT"
+	        5: a <- "LIMA"
+	        6: a <- "ENAM"
+	        7: a <- "TUJUH"
+	        8: a <- "DELAPAN"
+	        9: a <- "SEMBILAN"
+		default : a
+	END Case
+	
+	Case puluhan
+      		1: b <- "SATU"
+ 		2: b <- "DUA"
+	        3: b <- "TIGA"
+	        4: b <- "EMPAT"
+	        5: b <- "LIMA"
+	        6: b <- "ENAM"
+	        7: b <- "TUJUH"
+	        8: b <- "DELAPAN"
+	        9: b <- "SEMBILAN"
+		default : b
+	END Case
+
+	Case ratusan
+      		1: c <- "SATU"
+ 		2: c <- "DUA"
+	        3: c <- "TIGA"
+	        4: c <- "EMPAT"
+	        5: c <- "LIMA"
+	        6: c <- "ENAM"
+	        7: c <- "TUJUH"
+	        8: c <- "DELAPAN"
+	        9: c <- "SEMBILAN"
+		default : c
+	END Case
+
+	Case ribuan
+      		1: d <- "SATU"
+ 		2: d <- "DUA"
+	        3: d <- "TIGA"
+	        4: d <- "EMPAT"
+	        5: d <- "LIMA"
+	        6: d <- "ENAM"
+	        7: d <- "TUJUH"
+	        8: d <- "DELAPAN"
+	        9: d <- "SEMBILAN"
+		default : c
+	END Case
+
+	// untuk belasan
+	if(puluhan!=0 and puluhan>=2)
+		then 	q <- " PULUH "	
+        else if(puluhan!=0 and puluhan<2)
+		then 	q <- ""
+			b <- a
+			a <- " BELAS"
+
+        // untuk puluhan
+        if(puluhan==1 and satuan ==0)
+		then	q <- ""
+            		b <- "SEPULUH";
+            		a <- "";
+        else if(puluhan==1 and satuan ==1)
+            	then	q <- "";
+            		b <- "SEBELAS";
+            		a <- "";
+
+        // untuk ratusan
+        if(ratusan!=0 and ratusan >=1)
+		then	r <- " RATUS "
+        else if(ratusan!=0 and ratusan ==1)
+            	then	c <- "SERATUS "
+
+        // untuk ribuan
+        if(ribuan!=0 and ribuan >=1)
+            	then	s <- " RIBU "
+        else if(ribuan!=0 and ribuan ==1)
+            	then	d <- "SERIBU "   
+
+        // teks nol
+        if(angka==0)
+            	then 	teks <- "NOL"
+        // teks error
+        else if(angka > 9999)
+            	then 	teks <- "NOMOR YANG ANDA MASUKKAN MELEBIHI RIBUAN"
+        // tampilan teks
+        else
+           	 then 	teks <- ""+d+s+c+r+b+q+a
+	
+
+	write teks          
+	          
+end:
+
